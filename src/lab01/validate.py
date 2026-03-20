@@ -1,5 +1,3 @@
-# ЛР-1, транспорт - автобус (валидация)
-
 def _validate_route_number(value):
     if not isinstance(value, int):
         raise TypeError("номер маршрута должен быть целым числом")

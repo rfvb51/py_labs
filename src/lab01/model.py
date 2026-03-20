@@ -1,5 +1,3 @@
-# ЛР-1, транспорт - автобус
-
 from validate import (
     _validate_route_number,
     _validate_capacity,

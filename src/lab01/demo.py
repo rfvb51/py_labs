@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# ЛР-1, демонстрация работы класса Bus
-
 from model import Bus
 
 
