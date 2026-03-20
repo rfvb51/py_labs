@@ -3,43 +3,55 @@
 
 from model import Bus
 
-def print_separator(title):
-    print("\n" + "="*60)
+
+def print_section(title):
+    print("\n" + "=" * 60)
     print(title)
-    print("="*60)
+    print("=" * 60)
+
+
+def print_case(title):
+    print()
+    print(title)
+    print("-" * len(title))
+
+
+def print_error(text):
+    print(f"Ошибка: {text}")
+
 
 def main():
-    print_separator("1. Создание объектов и вывод информации (__str__)")
+    print_section("1. Создание объектов и вывод информации (__str__)")
     try:
-        bus1 = Bus(route_number=5, capacity=40, current_speed=0, passenger_count=0)
-        bus2 = Bus(route_number=12, capacity=30, current_speed=0, passenger_count=0)
+        bus1 = Bus(5, 40)
+        bus2 = Bus(12, 30)
         print(bus1)
         print(bus2)
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("2. Проверка валидации при создании (некорректные данные)")
+    print_section("2. Проверка валидации при создании (некорректные данные)")
     try:
         print("Попытка создать автобус №-5:")
-        bus_invalid = Bus(route_number=-5, capacity=40)
+        bus_invalid = Bus(-5, 40)
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
     try:
         print("Попытка создать автобус вместимостью 60:")
-        bus_invalid = Bus(route_number=10, capacity=60)
+        bus_invalid = Bus(10, 60)
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
     try:
         print("Попытка создать автобус с пассажирами в депо:")
-        bus_invalid = Bus(route_number=10, capacity=40, passenger_count=10)
+        bus_invalid = Bus(10, 40, 0, 10)
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("3. Изменение состояния и работа с пассажирами")
+    print_section("3. Изменение состояния и работа с пассажирами")
     try:
-        bus = Bus(route_number=25, capacity=50, current_speed=0, passenger_count=0)
+        bus = Bus(25, 50)
         print("Начальное состояние:")
         print(bus)
 
@@ -68,11 +80,11 @@ def main():
         print(bus)
 
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("4. Изменение скорости (setter с валидацией)")
+    print_section("4. Изменение скорости (setter с валидацией)")
     try:
-        bus = Bus(route_number=7, capacity=40, current_speed=0, passenger_count=0)
+        bus = Bus(7, 40)
         bus.start_route()
         print("После выхода на маршрут:")
         print(bus)
@@ -84,11 +96,11 @@ def main():
         print("\nПопытка установить скорость 150 км/ч (превышение MAX_SPEED):")
         bus.current_speed = 150
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("5. Проверка логических состояний")
+    print_section("5. Проверка логических состояний")
     try:
-        bus = Bus(route_number=9, capacity=35, current_speed=0, passenger_count=0)
+        bus = Bus(9, 35)
         print(bus)
 
         print("\nОтправляем на ТО...")
@@ -98,7 +110,7 @@ def main():
         print("\nПопытка выехать на маршрут с ТО:")
         bus.start_route()
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
     try:
         print("\nЗавершаем ТО и возвращаем в депо...")
@@ -116,13 +128,13 @@ def main():
         print("\nПопытка уехать в депо с пассажирами:")
         bus.return_to_depot()
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("6. Сравнение объектов (__eq__)")
+    print_section("6. Сравнение объектов (__eq__)")
     try:
-        bus_a = Bus(route_number=1, capacity=40, current_speed=0, passenger_count=0)
-        bus_b = Bus(route_number=1, capacity=40, current_speed=0, passenger_count=0)
-        bus_c = Bus(route_number=2, capacity=40, current_speed=0, passenger_count=0)
+        bus_a = Bus(1, 40)
+        bus_b = Bus(1, 40)
+        bus_c = Bus(2, 40)
 
         print(f"bus_a: {bus_a}")
         print(f"bus_b: {bus_b}")
@@ -132,11 +144,11 @@ def main():
         print(f"bus_a == bus_c: {bus_a == bus_c}")
         print(f"bus_a == 'Автобус': {bus_a == 'Автобус'}")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("7. Демонстрация __repr__")
+    print_section("7. Демонстрация __repr__")
     try:
-        bus = Bus(route_number=15, capacity=45, current_speed=0, passenger_count=0)
+        bus = Bus(15, 45)
         print("Строка для разработчика (__repr__):")
         print(repr(bus))
         print("\nВоссоздание объекта из __repr__ (концептуально):")
@@ -144,12 +156,12 @@ def main():
         print(f"Воссозданный объект: {new_bus}")
         print(f"Исходный и воссозданный объекты равны: {bus == new_bus}")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("8. Демонстрация атрибута класса")
+    print_section("8. Демонстрация атрибута класса")
     try:
-        bus1 = Bus(route_number=1, capacity=40)
-        bus2 = Bus(route_number=2, capacity=30)
+        bus1 = Bus(1, 40)
+        bus2 = Bus(2, 30)
 
         print(f"Атрибут класса Bus.MAX_SPEED: {Bus.MAX_SPEED}")
         print(f"Доступ через экземпляр bus1.MAX_SPEED: {bus1.MAX_SPEED}")
@@ -161,11 +173,11 @@ def main():
         print(f"bus1.MAX_SPEED: {bus1.MAX_SPEED}")
         print(f"bus2.MAX_SPEED: {bus2.MAX_SPEED}")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
 
-    print_separator("9. Дополнительные бизнес-методы (free_seats, load_factor)")
+    print_section("9. Дополнительные бизнес-методы (free_seats, load_factor)")
     try:
-        bus = Bus(route_number=33, capacity=50, current_speed=0, passenger_count=0)
+        bus = Bus(33, 50)
         bus.start_route()
         bus.board_passengers(42)
 
@@ -173,7 +185,8 @@ def main():
         print(f"Свободных мест: {bus.free_seats()}")
         print(f"Коэффициент загрузки: {bus.load_factor()}%")
     except Exception as e:
-        print(f"Ошибка: {e}")
+        print_error(str(e))
+
 
 if __name__ == "__main__":
     main()
