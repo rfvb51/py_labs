@@ -50,3 +50,13 @@
 ![img1](images/lab1/scr1.png)
 
 ![img2](/images/lab1/scr2.png)
+
+![img3](images/lab1/scr3.png)
+
+![img4](/images/lab1/scr4.png)
+
+![img5](images/lab1/scr5.png)
+
+![img6](/images/lab1/scr6.png)
+
+![img7](images/lab1/scr7.png)
