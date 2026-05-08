@@ -4,3 +4,4 @@
 - [Лаб_№1](src/lab01/README.md)
 - [Лаб_№2](src/lab02/README.md)
 - [Лаб_№3](src/lab03/README.md)
+- [Лаб_№4](src/lab04/README.md)
