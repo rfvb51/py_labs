@@ -1,5 +1,10 @@
-from model import Bus
-from collection import BusFleet
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from lab02.model import Bus
+from lab02.collection import BusFleet
 
 def main():
     fleet = BusFleet()
@@ -27,7 +32,6 @@ def main():
     fleet.remove(bus2)
     print("После удаления bus2:", fleet)
 
-    # ПОИСК, ИТЕРАЦИЯ, ИНДЕКСАЦИЯ
     print("\n=== ПОИСК, ИТЕРАЦИЯ, ИНДЕКСАЦИЯ ===")
     bus1.start_route()
     bus1.board_passengers(25)

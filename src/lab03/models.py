@@ -1,5 +1,10 @@
-from base import Bus
-from validate import (
+import sys
+import os
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from lab03.base import Bus
+from lab03.validate import (
     _validate_has_wifi,
     _validate_has_ac,
     _validate_route_type,
